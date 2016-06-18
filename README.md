@@ -25,7 +25,7 @@ You could use matrix parameters **before** the '?', followed by query parameters
 #Rules!!
 Since there is no official specification of the Matrix URIs, here are the rules I've followed in writing this parser (Suggestions welcome =) )
 
-		1. 
+		1. (please hang on while this section gets updated :) )
 
 #Examples
 
