@@ -23,7 +23,7 @@ The ```matrixParser``` object exposes a single function - the Middleware to pars
 You could use matrix parameters **before** the '?', followed by query parameters, but mixing is not currently supported.
 
 #Rules
-Here are the rules matrix-parser follows to parse Matrix URIs
+Here are the rules matrix-parser follows to parse Matrix URIs. Check out (this thread)[https://github.com/medialize/URI.js/issues/181] to understand in more detail.
 
 		1. The semicolon ';' is used to delimit key-value pairs (unlike the ampersand '&' in query strings)
 			eg- /index;a=b;c=d
@@ -67,7 +67,7 @@ A typical Matrix URI looks like:
 http://<DOMAIN>:<PORT>/<SEGMENT-0>;<KEY1>=<VALUE1>;<KEY2>=<VALUE2>/<SEGMENT-1>;<KEY1>=<VALUE1>
 ```
 
-The constructed Array looks like:
+The constructed req.matrix looks like:
 ```
 [
 	{
