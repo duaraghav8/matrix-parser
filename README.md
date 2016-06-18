@@ -5,6 +5,13 @@ matrix-parser is a Node.js Middleware for parsing [Matrix URIs](https://www.w3.o
 npm install matrix-parser
 ```
 
+#Run Tests
+traverse to the root directory 'matrix-parser' and:
+```bash
+npm install
+npm test
+```
+
 #API
 ```javascript
 var matrixParser = require ('matrix-parser');
