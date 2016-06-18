@@ -22,10 +22,61 @@ The ```matrixParser``` object exposes a single function - the Middleware to pars
 **NOTE:** The middleware currently doesn't support Matrix URIs to be used in combination with query strings.
 You could use matrix parameters **before** the '?', followed by query parameters, but mixing is not currently supported.
 
-#Rules!!
-Since there is no official specification of the Matrix URIs, here are the rules I've followed in writing this parser (Suggestions welcome =) )
+#Rules
+Here are the rules matrix-parser follows to parse Matrix URIs
 
-		1. (please hang on while this section gets updated :) )
+		1. The semicolon ';' is used to delimit key-value pairs (unlike the ampersand '&' in query strings)
+			eg- /index;a=b;c=d
+
+		2. '=' is used to delimit the keys and values
+
+		3. The string between / and the first ; is the segment name
+			eg- /index;hello=world
+			here, segment = "index"
+
+		4. All keys are unique. For compatibility, the key's last declaration is used to assign its value
+			eg- /index;key1=value1;key2=v2;key1=helloworld
+			here, the value of key1 = helloworld (NOT value1)
+
+		5. Comma ',' is used to assign multiple values to a key
+			eg- /index;list=1,2,3,4
+			here, list = [1,2,3,4] (array containing the comma-separated values)
+
+		6. Spaces are encoded as %20 instead of +
+			eg- /index;msg=hello%20world
+
+		7. If a key is not followed by the delimiter '=' and value, it is discarded
+			eg- /index;a=b;noValueKey;c=d
+			here, noValueKey will be discarded and will not be present in the matrix
+
+		8. If a key is followed by the delimiter '=' but not a value, its value is set to ''
+			eg- /index;key
+			here, key = ''
+
+#Format
+A typical Matrix URI looks like:
+```
+http://<DOMAIN>:<PORT>/<SEGMENT-0>;<KEY1>=<VALUE1>;<KEY2>=<VALUE2>/<SEGMENT-1>;<KEY1>=<VALUE1>
+```
+
+The constructed Array looks like:
+```
+[
+	{
+		segment: <SEGMENT-0>,
+		matrix: {
+			<KEY1> : <VALUE1>,
+			<KEY2> : <VALUE2>
+		}
+	},
+	{
+		segment: <SEGMENT-1>,
+		matrix: {
+			<KEY2> : <VALUE2>
+		}
+	}
+]
+```
 
 #Examples
 
