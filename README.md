@@ -144,7 +144,7 @@ var colorCodes = {
 
 app
 	.get ('/index', matrixParser, function (req, res, next) {
-    var color = req.matrix [0].color; //req.matrix [0] refers to parameters provided in the /index segment
+    	var color = req.matrix [0].color; //req.matrix [0] refers to parameters provided in the /index segment
 		res.send ('Color code for ' + color + ' is ' + colorCodes [color]);
 	})
 	.listen (8080, function () {
