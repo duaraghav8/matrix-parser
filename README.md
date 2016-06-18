@@ -30,7 +30,7 @@ Here are the rules matrix-parser follows to parse Matrix URIs
 
 		2. '=' is used to delimit the keys and values
 
-		3. The string between / and the first ; is the segment name
+		3. The string between / and the first ; is the segment name.
 			eg- /index;hello=world
 			here, segment = "index"
 
@@ -52,6 +52,14 @@ Here are the rules matrix-parser follows to parse Matrix URIs
 		8. If a key is followed by the delimiter '=' but not a value, its value is set to ''
 			eg- /index;key
 			here, key = ''
+
+		9. If no segment name is given, it defaults to ''
+			eg- http://example.com/;key=value
+			here, segment = '' and key = 'value'
+
+		10. If the path name is empty, req.matrix defaults an array of single object with segment = '' and matrix = {}
+			eg- http://example.com/
+			here, req.matrix = [ {segment: "", matrix: {}} ]
 
 #Format
 A typical Matrix URI looks like:
