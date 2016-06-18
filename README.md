@@ -17,7 +17,7 @@ npm test
 var matrixParser = require ('matrix-parser');
 ```
 
-The ```matrixParser``` object exposes a single function - the Middleware to parse matrix-style URIs
+The ```matrixParser``` object exposes a single function - the Middleware to parse matrix-style URIs. When used, it creates the matrix Array inside the request object, which can be accessed like ```req.matrix```
 
 **NOTE:** The middleware currently doesn't support Matrix URIs to be used in combination with query strings.
 You could use matrix parameters **before** the '?', followed by query parameters, but mixing is not currently supported.
