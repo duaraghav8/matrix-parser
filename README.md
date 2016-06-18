@@ -23,7 +23,7 @@ The ```matrixParser``` object exposes a single function - the Middleware to pars
 You could use matrix parameters **before** the '?', followed by query parameters, but mixing is not currently supported.
 
 #Rules
-Here are the rules matrix-parser follows to parse Matrix URIs. Check out (this thread)[https://github.com/medialize/URI.js/issues/181] to understand in more detail.
+Here are the rules matrix-parser follows to parse Matrix URIs. Check out [this thread](https://github.com/medialize/URI.js/issues/181) to understand in more detail.
 
 		1. The semicolon ';' is used to delimit key-value pairs (unlike the ampersand '&' in query strings)
 			eg- /index;a=b;c=d
