@@ -36,7 +36,7 @@ Here are the rules matrix-parser follows to parse Matrix URIs. Check out [this t
 
 		4. All keys are unique. For compatibility, the key's last declaration is used to assign its value
 			eg- /index;key1=value1;key2=v2;key1=helloworld
-			here, the value of key1 = helloworld (NOT value1)
+			here, the value of key1 = 'helloworld' (NOT value1)
 
 		5. Comma ',' is used to assign multiple values to a key
 			eg- /index;list=1,2,3,4
@@ -50,7 +50,7 @@ Here are the rules matrix-parser follows to parse Matrix URIs. Check out [this t
 			here, noValueKey will be discarded and will not be present in the matrix
 
 		8. If a key is followed by the delimiter '=' but not a value, its value is set to ''
-			eg- /index;key
+			eg- /index;key=;a=b
 			here, key = ''
 
 		9. If no segment name is given, it defaults to ''
@@ -96,9 +96,9 @@ var app = require ('express') (),
 app
 	.use (matrixParser ())
 	.get ('*', function (req, res, next) {
-    	res.header ('Content-Type', 'text/plain');
-    	res.write ('You posted: ');
-    	res.end (JSON.stringify (req.matrix, null, 2));
+		res.header ('Content-Type', 'text/plain');
+ 		res.write ('You posted: ');
+ 		res.end (JSON.stringify (req.matrix, null, 2));
 	})
 	.listen (8080, function () {
 		console.log ('listening on port 8080');
@@ -136,15 +136,17 @@ Output Construct of ```req.matrix```:
 ```javascript
 var app = require ('express') (),
 	matrixParser = require ('matrix-parser');
-
+ 
 var colorCodes = {
-  "white": "#FFFFFF",
-  "black": "#000000"
+	"white": "#FFFFFF",
+	"black": "#000000"
 };
 
+var mpMiddleware = matrixParser ();
+ 
 app
-	.get ('/index', matrixParser, function (req, res, next) {
-    	var color = req.matrix [0].color; //req.matrix [0] refers to parameters provided in the /index segment
+	.get ('/index*', mpMiddleware, function (req, res, next) {
+		var color = req.matrix [0].matrix.color; //req.matrix [0] refers to parameters provided in the /index segment 
 		res.send ('Color code for ' + color + ' is ' + colorCodes [color]);
 	})
 	.listen (8080, function () {
