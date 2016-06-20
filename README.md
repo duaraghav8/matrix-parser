@@ -102,12 +102,19 @@ app
 	.use (matrixParser ())
 	.get ('*', function (req, res, next) {
 		res.header ('Content-Type', 'text/plain');
- 		res.write ('You posted: ');
- 		res.end (JSON.stringify (req.matrix, null, 2));
+		res.write ('You posted: ');
+		res.end (JSON.stringify (req.matrix, null, 2));
 	})
 	.listen (8080, function () {
 		console.log ('listening on port 8080');
 	});
+```
+**NOTE:** If you want to allow Matrix on a specific route (like '/index'), then you have to append '*' to it like
+```javascript
+app.get ('/index*', function (req, res) {
+	//this means that the first segment of the matrix is always "index"
+	console.log (req.matrix [0].segment === "index");	//true
+});
 ```
 
 ###Test:
