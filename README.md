@@ -109,18 +109,6 @@ app
 		console.log ('listening on port 8080');
 	});
 ```
-**NOTE:** If you want to allow Matrix on a specific route (like '/index'), then you have to append '*' to it like
-```javascript
-app.get ('/index*', function (req, res) {
-	/*
-		this means that the first segment of the matrix is always "index"
-		and only URIs starting with /index are valid, like:
-		http://example.com/index;hello=world		(VALID)
-		http://example.com/home;hello=world			(INVALID)
-	*/
-	console.log (req.matrix [0].segment === "index");	//true
-});
-```
 
 ###Test:
 ```bash
@@ -147,6 +135,19 @@ Output Construct of ```req.matrix```:
 		}
 	}
 ]
+```
+
+**NOTE:** If you want to allow Matrix on a specific route (like '/index'), then you have to append '*' to it like
+```javascript
+app.get ('/index*', function (req, res) {
+	/*
+		this means that the first segment of the matrix is always "index"
+		and only URIs starting with /index are valid, like:
+		http://example.com/index;hello=world		(VALID)
+		http://example.com/home;hello=world			(INVALID)
+	*/
+	console.log (req.matrix [0].segment === "index");	//true
+});
 ```
 
 ###Express: Route-specific
