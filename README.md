@@ -112,7 +112,12 @@ app
 **NOTE:** If you want to allow Matrix on a specific route (like '/index'), then you have to append '*' to it like
 ```javascript
 app.get ('/index*', function (req, res) {
-	//this means that the first segment of the matrix is always "index"
+	/*
+		this means that the first segment of the matrix is always "index"
+		and only URIs starting with /index are valid, like:
+		http://example.com/index;hello=world		(VALID)
+		http://example.com/home;hello=world			(INVALID)
+	*/
 	console.log (req.matrix [0].segment === "index");	//true
 });
 ```
