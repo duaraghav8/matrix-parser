@@ -146,7 +146,7 @@ app.get ('/index*', function (req, res) {
 		http://example.com/index;hello=world		(VALID)
 		http://example.com/home;hello=world			(INVALID)
 	*/
-	console.log (req.matrix [0].segment === "index");	//true
+	assert (req.matrix [0].segment === "index");	//no assertion errors =)
 });
 ```
 
