@@ -3,7 +3,7 @@ matrix-parser is a Node.js Middleware for parsing [Matrix URIs](https://www.w3.o
 #Install
 ```bash
 npm install matrix-parser
-```
+```t
 
 #Run Tests
 traverse to the root directory 'matrix-parser' and:
@@ -112,7 +112,7 @@ app
 
 ###Test:
 ```bash
-curl 'http://localhost:8080/index;name=RAGHAV%20DUA;house=targarian/profile;age=20;email=duaraghav8%40gmail.com'
+curl 'http://localhost:8080/index;name=RAGHAV%20DUA;house=targaryen/profile;age=20;email=duaraghav8%40gmail.com'
 ```
 
 NOTICE THE %20 USED TO INDICATE SPACE INSTEAD OF +
