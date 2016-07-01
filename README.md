@@ -22,7 +22,7 @@ The ```matrixParser``` object exposes a single function - the Middleware to pars
 ##Options
 You can pass an ```options``` object when calling matrixParser (). The object currently supports the ```maxKeys``` field, used to specify **the maximum number of keys allowed per segment**. Keys are added into the matrix object from left to right.
 
-For example, using ```matrixParser ({ maxKeys: 2 })``` and a URI ```http://example.com/home;k1=v2;k2=v2;k3=v3``` will simply neglect all key-value pairs after k2.
+For example, using ```matrixParser ({ maxKeys: 2 })``` and a URI ```http://example.com/home;k1=v1;k2=v2;k3=v3``` will simply neglect all key-value pairs after k2.
 
 **NOTE:** The middleware currently doesn't support Matrix URIs to be used in combination with query strings.
 You could use matrix parameters **before** the '?', followed by query parameters, but mixing is not currently supported.
