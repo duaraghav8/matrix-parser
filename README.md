@@ -3,7 +3,7 @@ matrix-parser is a Node.js Middleware for parsing [Matrix URIs](https://www.w3.o
 #Install
 ```bash
 npm install matrix-parser
-```t
+```
 
 #Run Tests
 traverse to the root directory 'matrix-parser' and:
