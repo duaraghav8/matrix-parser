@@ -1,4 +1,4 @@
-/*!
+/**
  * matrix-parser
  * Copyright(c) 2016 Raghav Dua
  * MIT Licensed
