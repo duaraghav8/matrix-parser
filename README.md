@@ -160,7 +160,7 @@ var colorCodes = {
 	"black": "#000000"
 };
 
-var mpMiddleware = matrixParser ();
+var mpMiddleware = matrixParser ({ maxKeys: 1 });	//notice the use of the maxKeys option
  
 app
 	.get ('/index*', mpMiddleware, function (req, res, next) {
