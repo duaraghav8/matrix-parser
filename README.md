@@ -124,7 +124,7 @@ Output Construct of ```req.matrix```:
 		segment: 'index',
 		matrix: {
 			name: 'RAGHAV DUA',
-			house: 'targarian'
+			house: 'targaryen'
 		}
 	},
 	{
